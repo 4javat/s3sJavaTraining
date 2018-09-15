@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.companyname.javasampletest.entity.StudentEntity;
 import com.companyname.javasampletest.repository.StudentRepository;
-
+import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 public class StudentController {
 @Autowired
@@ -20,11 +20,12 @@ StudentRepository studentRepository;
 public StudentEntity createStudent(@Valid @RequestBody StudentEntity student) {
     return studentRepository.save(student);  
 }
-{
-@GetMappling("/student/{id}")
+
+@GetMapping("/student/{id}")
 public StudentEntity getNoteById(@PathVariable(value = "id") Long noteId){
     return studentRepository.findById(noteId)
-	  .orElseThrow(() -> new RuntimeException("cannot find student");
+	  .orElseThrow(()-> new RuntimeException("cannot find student"));
 }
+
 
 }
